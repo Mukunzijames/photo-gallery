@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DIN Condensed Web', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 34.5px;
+}
+
+.photo-collection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s, transform 0.3s;
+}
+
+.photo-item .details {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #fff;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.photo-item .details h2,
+.photo-item .details p {
+    margin: 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.photo-item .details h2 {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.photo-item .details p {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.photo-item .learn-more {
+    opacity: 0;
+    margin-top: 10px;
+    color: green;
+    transition: opacity 0.3s;
+    position: absolute;
+    margin-top: -34px;
+}
+
+.photo-item:hover img {
+    filter: grayscale(100%) blur(5px);
+    transform: scale(1.05);
+}
+
+.photo-item:hover .details h2,
+.photo-item:hover .details p {
+    transform: translateY(-30px);
+    opacity: 0.8;
+}
+
+.photo-item:hover .details .learn-more {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .photo-collection {
+        justify-content: flex-start;
+    }
+
+    .photo-item .details {
+        display: none;
+    }
+}
